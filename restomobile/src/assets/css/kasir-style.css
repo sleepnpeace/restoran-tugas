@@ -1,0 +1,313 @@
+/* =========================
+   RESET & GLOBAL
+========================= */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Inter', sans-serif; 
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    overflow: hidden; 
+}
+
+/* =========================
+   LAYOUT STRUCTURE
+========================= */
+.scroll-wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 140px;
+    position: relative;
+    z-index: 1;
+}
+
+.main-content::-webkit-scrollbar { display: none; }
+.main-content { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* =========================
+   CATEGORY & GRID
+========================= */
+.category-section { margin-bottom: 40px; }
+
+.category-name {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #166534;
+    border-left: 5px solid #22c55e;
+    padding-left: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.menu-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* =========================
+   CARDS (DESAIN ASLI)
+========================= */
+.menu-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+    height: 100%;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.card-image {
+    height: 150px;
+    cursor: pointer;
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stock-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.9);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.card-content {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-name {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #1e293b;
+    font-size: 1rem;
+}
+
+.price-tag {
+    color: #16a34a;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   SIDEBAR & MODAL
+========================= */
+.sidebar-cart {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 400px;
+    height: 100%;
+    background: white;
+    border-left: 4px solid #16a34a;
+    padding: 25px;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 15px -3px rgba(0,0,0,0.1);
+}
+
+.sidebar-cart.active { right: 0; }
+
+.modal-overlay {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    background: rgba(15,23,42,0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content-small {
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* =========================
+   FORMS & INPUTS (HITAM BIASA, NORMAL WEIGHT)
+========================= */
+.label-form {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;    /* Tidak terlalu bold */
+    color: #000000;      /* ✅ Hitam Biasa */
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.input-minimal {
+    width: 100%;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #000000;       /* ✅ Teks ketikan Hitam Biasa */
+    font-weight: 400;     /* ✅ Normal (Bukan Bold) */
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/* Khusus Select Dine In / Takeaway */
+select.input-minimal {
+    color: #000000 !important;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.action-group {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.btn-info-detail {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #f1f5f9;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 11px;
+    color: #475569;
+}
+
+.btn-order {
+    flex: 2;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #16a34a;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* =========================
+   QUANTITY CONTROLS (+ / -)
+========================= */
+.qty-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-qty {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: white;
+    color: #000000;       /* ✅ Hitam Biasa */
+    font-weight: 400;     /* ✅ Normal Weight */
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.qty-container span {
+    color: #000000;       /* ✅ Angka Qty Hitam Biasa */
+    font-weight: 500;
+}
+
+/* =========================
+   FLOATING CART & BADGE
+========================= */
+.cart-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #16a34a;
+    color: white;
+    border: none;
+    z-index: 999;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(22,163,74,0.4);
+    font-size: 24px;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ef4444;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+@media (max-width: 480px) {
+    .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .sidebar-cart { width: 100%; right: -100%; }
+}
